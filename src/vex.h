@@ -13,4 +13,51 @@ typedef double FTYPE;
 template <std::uint64_t dim>
 using Vec = std::array<FTYPE, dim>;
 
+/* scalar product */
+// Is for_each used correctly here?
+template <std::uint64_t dim>
+Vec<dim> operator*(Vec<dim>& left, FTYPE scalar) {
+    Vec<dim> give;
+    for (auto it = give.begin(); it < give.end(); it++) {
+        *it = left.at(it - give.begin());
+    }
+    return give;
+}
+
+// simple commutativity overloading
+template <std::uint64_t dim>
+Vec<dim> operator*(FTYPE scalar, Vec<dim>& right) {
+    return right * scalar;
+}
+
+// this will probably blow up
+template <std::uint64_t dim>
+Vec<dim>& operator*=(Vec<dim>& left, FTYPE scalar) {
+    return &(left * scalar);
+}
+
+template <std::uint64_t dim>
+FTYPE operator*(Vec<dim>& left, Vec<dim>& right) {
+    FTYPE dot = 0;
+    for (auto i = 0; i < dim; i++) {
+        dot += left.at(i) * right.at(i);
+    }
+    return dot;
+}
+
+template <std::uint64_t dim>
+Vec<dim> operator+(Vec<dim>& left, Vec<dim>& right) {
+    Vec<dim> give;
+    for (auto it = give.begin(); it < give.end(); it++) {
+        *it = left.at(it - give.begin()) + right.at(it - give.begin());
+    }
+
+    return give;
+}
+
+template <std::uint64_t dim>
+Vec<dim>& operator+=(Vec<dim>& left, Vec<dim>& right) {
+    return &(left + right);
+}
+
 #endif //RTIN1WEEKEND_VEX_H

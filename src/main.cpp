@@ -3,9 +3,11 @@
 
 #include "color.h"
 
+#define IMAGE_OUT "image-out/test.ppm"
+
 int main() {
     const int image_width = 256, image_height = 256;
-    std::ofstream ofile("image-out/test.ppm");
+    std::ofstream ofile(IMAGE_OUT);
 
     // ppm file magic & header
     ofile << "P3\n" << image_width << ' ' << image_height << "\n255\n";
