@@ -33,7 +33,8 @@ Vec<dim> operator*(FTYPE scalar, Vec<dim>& right) {
 // this will probably blow up
 template <std::uint64_t dim>
 Vec<dim>& operator*=(Vec<dim>& left, FTYPE scalar) {
-    return &(left * scalar);
+    left = left * scalar;
+    return left;
 }
 
 template <std::uint64_t dim>
@@ -57,7 +58,8 @@ Vec<dim> operator+(Vec<dim>& left, Vec<dim>& right) {
 
 template <std::uint64_t dim>
 Vec<dim>& operator+=(Vec<dim>& left, Vec<dim>& right) {
-    return &(left + right);
+    left = left + right;
+    return left;
 }
 
 #endif //RTIN1WEEKEND_VEX_H
