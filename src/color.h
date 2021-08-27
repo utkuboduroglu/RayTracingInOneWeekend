@@ -1,19 +1,16 @@
-#ifndef RTIN1WEEKEND_COLOR_H
-#define RTIN1WEEKEND_COLOR_H
+#ifndef COLOR_H
+#define COLOR_H
 
-#include "vex.h"
-#include <fstream>
+#include "vec3.h"
 
-namespace Color {
-    using color = Vec<3>;
+#include <iostream>
 
-    std::ofstream& write_color(std::ofstream& out,
-                               color pixel_color) {
-        out << static_cast<int>(255.99 * pixel_color.at(0)) << ' '
-            << static_cast<int>(255.99 * pixel_color.at(1)) << ' '
-            << static_cast<int>(255.99 * pixel_color.at(2)) << '\n';
-        return out;
-    }
+std::ostream& operator<<(std::ostream& out, color& pixel_color) {
+    // Write the translated [0,255] value of each color component.
+    out << static_cast<int>(255.999 * pixel_color.x()) << ' '
+        << static_cast<int>(255.999 * pixel_color.y()) << ' '
+        << static_cast<int>(255.999 * pixel_color.z());
+    return out;
 }
 
-#endif //RTIN1WEEKEND_COLOR_H
+#endif
