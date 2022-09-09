@@ -15,4 +15,4 @@ SET(CMAKE_EXE_LINKER_FLAGS  "${CMAKE_EXE_LINKER_FLAGS} ${GCC_COVERAGE_LINK_FLAGS
 
 set(SOURCE_FILES src/main.cpp src/vec_utils.h src/color.h)
 
-add_executable(rtin1weekend src/main.cpp src/ray.h)
+add_executable(rtin1weekend src/main.cpp src/ray.h src/hit_calc.h)
